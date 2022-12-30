@@ -35,7 +35,8 @@ class Shop(
         '_pickup_options',
         '_enable_auto_discounts',
         'gifts',
-        'promos'
+        'promos',
+        'phone',
     ]
 
     def __init__(
@@ -50,6 +51,7 @@ class Shop(
         version: str = None,
         agency: str = None,
         email: str = None,
+        phone: str = None,
         delivery_options: List["models.Option"] = None,
         pickup_options: List["models.Option"] = None,
         enable_auto_discounts=None,
@@ -91,6 +93,7 @@ class Shop(
             version=self.version,
             agency=self.agency,
             email=self.email,
+            phone=self.phone,
             currencies=[c.to_dict() for c in self.currencies],
             categories=[c.to_dict() for c in self.categories],
             delivery_options=[o.to_dict() for o in self.delivery_options],
@@ -113,6 +116,7 @@ class Shop(
             "version",
             "agency",
             "email",
+            "phone",
         ):
             value = getattr(self, tag)
             if value:
